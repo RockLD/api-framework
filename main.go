@@ -2,17 +2,30 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"fmt"
-	"log"
+	"github.com/lexkong/log"
 	"api/router"
 	"net/http"
 	"time"
 	"errors"
+	"github.com/spf13/pflag"
+	"github.com/spf13/viper"
+	"api/config"
+)
+
+var (
+	cfg = pflag.StringP("config","c","","conf/config.yaml")
 )
 
 func main() {
+	pflag.Parse()
+
+	if err := config.Init(*cfg);err != nil {
+		panic(err)
+	}
+
+	gin.SetMode(viper.GetString("runmode"))
+
 	g := gin.New()
-	fmt.Println("hello")
 
 	middlewares := []gin.HandlerFunc{}
 
@@ -20,12 +33,12 @@ func main() {
 
 	go func() {
 		if err := pingServer();err != nil {
-			log.Println("The router bas been deployed successfully")
+			log.Info("The router bas been deployed successfully")
 		}
 	}()
-	
-	log.Printf("Start listen the address: %s",":8080")
-	log.Printf(http.ListenAndServe(":8080",g).Error())
+
+	log.Infof("Start listen the address: %s",":8080")
+	log.Info(http.ListenAndServe(":8080",g).Error())
 }
 
 func pingServer() error {
@@ -36,7 +49,7 @@ func pingServer() error {
 			return nil
 		}
 
-		log.Printf("Waiting for the router , retry in 1 second")
+		log.Info("Waiting for the router , retry in 1 second")
 		time.Sleep(time.Second)
 	}
 
