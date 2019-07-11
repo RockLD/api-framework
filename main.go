@@ -10,6 +10,8 @@ import (
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
 	"api/config"
+	"api/model"
+	"fmt"
 )
 
 var (
@@ -19,8 +21,20 @@ var (
 func main() {
 	pflag.Parse()
 
+
+
+
 	if err := config.Init(*cfg);err != nil {
 		panic(err)
+	}
+
+
+	for {
+		fmt.Println(viper.GetString("db.addr"))
+		fmt.Println(viper.GetString("db.username"))
+		fmt.Println(viper.GetString("db.password"))
+		fmt.Println(viper.GetInt("db.port"))
+		time.Sleep(2*time.Second)
 	}
 
 	gin.SetMode(viper.GetString("runmode"))
@@ -36,6 +50,20 @@ func main() {
 			log.Info("The router bas been deployed successfully")
 		}
 	}()
+
+
+	for {
+		fmt.Println(viper.GetString("db.addr"))
+		fmt.Println(viper.GetString("db.username"))
+		fmt.Println(viper.GetString("db.password"))
+		fmt.Println(viper.GetString("db.port"))
+		time.Sleep(2*time.Second)
+	}
+
+
+	//初始化数据库
+	model.DB.Init()
+	defer model.DB.Close()
 
 	log.Infof("Start listen the address: %s",":8080")
 	log.Info(http.ListenAndServe(":8080",g).Error())

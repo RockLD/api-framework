@@ -20,8 +20,10 @@ func Init(cfg string)error {
 		return err
 	}
 
+	//初始化日志
 	c.initLog()
 
+	//监听config变化
 	c.watchConfig()
 
 	return nil

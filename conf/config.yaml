@@ -12,3 +12,15 @@ log:
   log_rotate_date:1
   log_rotate_size:1024
   log_backup_count:7
+db:
+  username:root
+  password:123456
+  addr:127.0.0.1
+  port:3307
+  name:db_api
+docker_db:
+  username:root
+  password:123456
+  addr:127.0.0.1
+  port:3307
+  name:db_api
