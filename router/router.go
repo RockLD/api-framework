@@ -1,13 +1,14 @@
 package router
 
 import (
-	"github.com/gin-gonic/gin"
-	"api/middleware"
-	"net/http"
 	"api/check"
+	"api/handler/user"
+	"api/middleware"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
-func Load(g *gin.Engine,m ...gin.HandlerFunc) *gin.Engine {
+func Load(g *gin.Engine, m ...gin.HandlerFunc) *gin.Engine {
 
 	g.Use(gin.Recovery())
 
@@ -20,15 +21,19 @@ func Load(g *gin.Engine,m ...gin.HandlerFunc) *gin.Engine {
 	g.Use(m...)
 
 	g.NoRoute(func(c *gin.Context) {
-		c.String(http.StatusNotFound,"The router is not exist!")
+		c.String(http.StatusNotFound, "The router is not exist!")
 	})
+
+	u := g.Group("/v1/user")
+	{
+		u.POST("", user.Create)
+	}
 
 	ch := g.Group("/check")
 	{
-		ch.GET("/health",check.HealthCheck)
+		ch.GET("/health", check.HealthCheck)
 	}
 
 	return g
-
 
 }
