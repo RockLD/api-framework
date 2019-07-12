@@ -4,23 +4,25 @@ name: apiserver              # API Server的名字
 url: http://127.0.0.1:8080   # pingServer函数请求的API服务器的ip:port
 max_ping_count: 10           # pingServer函数try的次数
 log:
-  writers:file,stdout
-  logger_level:DEBUG
-  log_file:log/api.log
-  log_format_text:false
-  rollingPolicy:size
-  log_rotate_date:1
-  log_rotate_size:1024
-  log_backup_count:7
+  writers: file,stdout
+  logger_level: DEBUG
+  log_file: log/api.log
+  log_format_text: false
+  rollingPolicy: size
+  log_rotate_date: 1
+  log_rotate_size: 1024
+  log_backup_count: 7
+
 db:
-  username:root
-  password:123456
-  addr:127.0.0.1
-  port:3307
-  name:db_api
+  username: root
+  password: 123456
+  addr: 127.0.0.1
+  port: 3307
+  name: db_api
+
 docker_db:
-  username:root
-  password:123456
-  addr:127.0.0.1
-  port:3307
-  name:db_api
+  username: root
+  password: 123456
+  addr: 127.0.0.1
+  port: 3307
+  name: db_api
