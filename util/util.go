@@ -12,3 +12,7 @@ func GetReqID(c *gin.Context) string {
 	}
 	return ""
 }
+
+func GetShortId() (string, error) {
+	return "", nil
+}
