@@ -12,7 +12,7 @@ type UserModel struct {
 }
 
 //表名
-func (c *UserModel) TableName() string {
+func (u *UserModel) TableName() string {
 	return "tb_users"
 }
 

@@ -26,6 +26,11 @@ func Create(c *gin.Context) {
 		return
 	}
 
+	if err := r.checkParam(); err != nil {
+		handler.SendResponse(c, err, "2")
+		return
+	}
+
 	u := model.UserModel{
 		Username: r.Username,
 		Password: r.Password,
@@ -42,7 +47,7 @@ func Create(c *gin.Context) {
 	}
 
 	if err := u.Create(); err != nil {
-		handler.SendResponse(c, errno.ErrDatabase, nil)
+		handler.SendResponse(c, errno.ErrDatabase, err)
 		return
 	}
 
@@ -51,5 +56,12 @@ func Create(c *gin.Context) {
 }
 
 func (r *CreateRequest) checkParam() error {
+	if r.Username == "" {
+		return errno.New(errno.ErrValidation, nil).Add("username is empty.")
+	}
+
+	if r.Password == "" {
+		return errno.New(errno.ErrValidation, nil).Add("password is empty.")
+	}
 	return nil
 }
