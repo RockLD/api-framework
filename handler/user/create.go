@@ -2,42 +2,54 @@ package user
 
 import (
 	"api/handler"
+	"api/model"
 	"api/pkg/errno"
-	"fmt"
+	"api/util"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
+	"github.com/lexkong/log/lager"
 )
 
+/**
+创建用户
+1、从HTTP消息体获取参数
+2、参数校验
+3、加密密码
+4、在数据库中添加数据记录
+5、返回结果
+*/
 func Create(c *gin.Context) {
+	log.Info("User Create function called.", lager.Data{"X-Request-Id": util.GetReqID})
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
 		handler.SendResponse(c, errno.ErrBind, nil)
 		return
 	}
-	admin2 := c.Param("username")
-	log.Infof("URL username : %s", admin2)
 
-	desc := c.Param("desc")
-	log.Infof("URL key param desc : %s", desc)
+	u := model.UserModel{
+		Username: r.Username,
+		Password: r.Password,
+	}
 
-	contentType := c.GetHeader("Content-Type")
-	log.Infof("HeaderContent-Type : %s", contentType)
-
-	log.Debugf("username is: [%s],password is [%s]", r.Username, r.Password)
-
-	if r.Username == "" {
-		handler.SendResponse(
-			c,
-			errno.New(errno.ErrUserNotFound, fmt.Errorf("username can not found in db:xx.xx.xx.xx")),
-			nil,
-		)
+	if err := u.Validate(); err != nil {
+		handler.SendResponse(c, errno.ErrEncrypt, nil)
 		return
 	}
 
-	if r.Password == "" {
-		handler.SendResponse(c, fmt.Errorf("password is empty"), nil)
+	if err := u.Encrypt(); err != nil {
+		handler.SendResponse(c, errno.ErrEncrypt, nil)
+		return
 	}
 
-	rsp := CreateResponse{}
+	if err := u.Create(); err != nil {
+		handler.SendResponse(c, errno.ErrDatabase, nil)
+		return
+	}
+
+	rsp := CreateResponse{Username: r.Username}
 	handler.SendResponse(c, nil, rsp)
+}
+
+func (r *CreateRequest) checkParam() error {
+	return nil
 }
