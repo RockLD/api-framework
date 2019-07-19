@@ -2,7 +2,6 @@ package user
 
 import (
 	"api/handler"
-	"api/model"
 	"api/pkg/errno"
 	"api/service"
 	"github.com/gin-gonic/gin"

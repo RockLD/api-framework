@@ -10,8 +10,10 @@ require (
 	github.com/jinzhu/gorm v1.9.10
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/lexkong/log v0.0.0-20180607165131-972f9cd951fc
+	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/pflag v1.0.3
 	github.com/spf13/viper v1.4.0
+	github.com/willf/pad v0.0.0-20190207183901-eccfe5d84172
 	golang.org/x/crypto v0.0.0-20190605123033-f99c8df09eb5
 	gopkg.in/go-playground/validator.v9 v9.29.1
 )

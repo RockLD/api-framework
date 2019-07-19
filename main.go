@@ -2,6 +2,7 @@ package main
 
 import (
 	"api/config"
+	"api/middleware"
 	"api/model"
 	"api/router"
 	"errors"
@@ -29,6 +30,10 @@ func main() {
 	g := gin.New()
 
 	middlewares := []gin.HandlerFunc{}
+
+	//加载自定义中间件
+	middlewares = append(middlewares, middleware.RequestId())
+	middlewares = append(middlewares, middleware.Logging())
 
 	router.Load(g, middlewares...)
 
