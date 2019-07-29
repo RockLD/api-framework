@@ -24,8 +24,11 @@ func Load(g *gin.Engine, m ...gin.HandlerFunc) *gin.Engine {
 		c.String(http.StatusNotFound, "The router is not exist!")
 	})
 
+	g.POST("/login", user.Login)
+
 	//兼容版本，使用v1
 	u := g.Group("/v1/user")
+	u.Use(middleware.AuthMiddleware())
 	{
 		u.POST("", user.Create)
 		u.DELETE("/:id", user.Delete)
