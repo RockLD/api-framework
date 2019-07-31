@@ -8,15 +8,14 @@ import (
 	"github.com/spf13/viper"
 )
 
-
 type Database struct {
-	Self	*gorm.DB
-	Docker	*gorm.DB
+	Self   *gorm.DB
+	Docker *gorm.DB
 }
 
 var DB *Database
 
-func openDB(username,password,addr,port,name string)*gorm.DB {
+func openDB(username, password, addr, port, name string) *gorm.DB {
 	config := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=%t&loc=%s",
 		username,
 		password,
@@ -25,11 +24,11 @@ func openDB(username,password,addr,port,name string)*gorm.DB {
 		name,
 		true,
 		"Local",
-		)
-	db, err := gorm.Open("mysql",config)
+	)
+	db, err := gorm.Open("mysql", config)
 
 	if err != nil {
-		log.Errorf(err,"Database connection failed.Database name: %s",name)
+		log.Errorf(err, "Database connection failed.Database name: %s", name)
 	}
 
 	setupDB(db)
@@ -48,14 +47,14 @@ func InitSelfDB() *gorm.DB {
 		viper.GetString("db.addr"),
 		viper.GetString("db.port"),
 		viper.GetString("db.name"),
-		)
+	)
 }
 
-func GetSelfDB()*gorm.DB {
+func GetSelfDB() *gorm.DB {
 	return InitSelfDB()
 }
 
-func InitDockerDB()*gorm.DB {
+func InitDockerDB() *gorm.DB {
 	return openDB(viper.GetString("docker_db.username"),
 		viper.GetString("docker_db.password"),
 		viper.GetString("docker_db.addr"),
@@ -68,14 +67,14 @@ func GetDockerDB() *gorm.DB {
 	return InitDockerDB()
 }
 
-func (db *Database)Init() {
+func (db *Database) Init() {
 	DB = &Database{
-		Self:GetSelfDB(),
-		Docker:GetDockerDB(),
+		Self:   GetSelfDB(),
+		Docker: GetDockerDB(),
 	}
 }
 
-func (db *Database)Close() {
+func (db *Database) Close() {
 	DB.Self.Close()
 	DB.Docker.Close()
 }
