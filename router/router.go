@@ -27,7 +27,7 @@ func Load(g *gin.Engine, m ...gin.HandlerFunc) *gin.Engine {
 	g.POST("/login", demo.Login)
 
 	//兼容版本，使用v1
-	u := g.Group("/v1/user")
+	u := g.Group("/v1/demo")
 	u.Use(middleware.AuthMiddleware())
 	{
 		u.POST("", demo.Create)

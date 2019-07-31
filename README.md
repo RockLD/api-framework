@@ -39,15 +39,14 @@ ___________
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] POST   /login                    --> api/handler/user.Login (7 handlers)
-[GIN-debug] POST   /v1/user                  --> api/handler/user.Create (8 handlers)
-[GIN-debug] DELETE /v1/user/:id              --> api/handler/user.Delete (8 handlers)
-[GIN-debug] PUT    /v1/user/:id              --> api/handler/user.Update (8 handlers)
-[GIN-debug] GET    /v1/user                  --> api/handler/user.List (8 handlers)
-[GIN-debug] GET    /v1/user/:username        --> api/handler/user.Get (8 handlers)
+[GIN-debug] POST   /login                    --> api/handler/demo.Login (7 handlers)
+[GIN-debug] POST   /v1/demo                  --> api/handler/demo.Create (8 handlers)
+[GIN-debug] DELETE /v1/demo/:id              --> api/handler/demo.Delete (8 handlers)
+[GIN-debug] PUT    /v1/demo/:id              --> api/handler/demo.Update (8 handlers)
+[GIN-debug] GET    /v1/demo                  --> api/handler/demo.List (8 handlers)
+[GIN-debug] GET    /v1/demo/:username        --> api/handler/demo.Get (8 handlers)
 [GIN-debug] GET    /check/health             --> api/check.HealthCheck (7 handlers)
-{"level":"INFO","timestamp":"2019-07-29 18:02:40.533","file":"api-framework/main.go:63","msg":"Waiting for the router , retry in 1 second"}
-{"level":"INFO","timestamp":"2019-07-29 18:02:40.555","file":"api-framework/main.go:50","msg":"Start listen the address: :8080"}
-
+{"level":"INFO","timestamp":"2019-07-31 09:43:12.868","file":"api-framework/main.go:63","msg":"Waiting for the router , retry in 1 second"}
+{"level":"INFO","timestamp":"2019-07-31 09:43:12.882","file":"api-framework/main.go:50","msg":"Start listen the address: :8080"}
 ```
 
