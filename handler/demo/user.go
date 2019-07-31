@@ -1,4 +1,4 @@
-package user
+package demo
 
 import "api/model"
 
