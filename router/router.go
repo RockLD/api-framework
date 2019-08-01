@@ -7,6 +7,8 @@ import (
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func Load(g *gin.Engine, m ...gin.HandlerFunc) *gin.Engine {
@@ -24,6 +26,8 @@ func Load(g *gin.Engine, m ...gin.HandlerFunc) *gin.Engine {
 	g.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The router is not exist!")
 	})
+
+	g.GET("/swagger/*any",ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	pprof.Register(g)
 	g.POST("/login", demo.Login)

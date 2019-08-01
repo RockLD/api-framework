@@ -17,6 +17,8 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/pflag v1.0.3
 	github.com/spf13/viper v1.4.0
+	github.com/swaggo/gin-swagger v1.2.0
+	github.com/swaggo/swag v1.6.2 // indirect
 	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf
 	github.com/willf/pad v0.0.0-20190207183901-eccfe5d84172
 	golang.org/x/crypto v0.0.0-20190605123033-f99c8df09eb5
