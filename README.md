@@ -33,7 +33,7 @@ ___________
 3、构建项目
 
 ```
-cd api-frameword
+cd api-framework
 make
 ```
 
