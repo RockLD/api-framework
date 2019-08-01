@@ -1,8 +1,8 @@
 package service
 
 import (
-	"api/model"
-	"api/util"
+	"apiserver/model"
+	"apiserver/util"
 	"fmt"
 	"sync"
 )

@@ -1,9 +1,9 @@
 package demo
 
 import (
-	"api/handler"
-	"api/pkg/errno"
-	"api/service"
+	"apiserver/handler"
+	"apiserver/pkg/errno"
+	"apiserver/service"
 	"github.com/gin-gonic/gin"
 )
 

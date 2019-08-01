@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"api/handler"
-	"api/pkg/errno"
-	"api/pkg/token"
+	"apiserver/handler"
+	"apiserver/pkg/errno"
+	"apiserver/pkg/token"
 	"github.com/gin-gonic/gin"
 )
 

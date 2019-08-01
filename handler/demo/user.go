@@ -1,6 +1,6 @@
 package demo
 
-import "api/model"
+import "apiserver/model"
 
 type CreateRequest struct {
 	Username string `json:"username"`

@@ -1,8 +1,8 @@
 package model
 
 import (
-	"api/pkg/auth"
-	"api/pkg/constvar"
+	"apiserver/pkg/auth"
+	"apiserver/pkg/constvar"
 	"fmt"
 	validator "gopkg.in/go-playground/validator.v9"
 )

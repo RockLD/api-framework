@@ -1,9 +1,9 @@
 package demo
 
 import (
-	"api/handler"
-	"api/model"
-	"api/pkg/errno"
+	"apiserver/handler"
+	"apiserver/model"
+	"apiserver/pkg/errno"
 	"github.com/gin-gonic/gin"
 	"strconv"
 )

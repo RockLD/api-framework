@@ -1,9 +1,9 @@
 package router
 
 import (
-	"api/check"
-	"api/handler/demo"
-	"api/middleware"
+	"apiserver/check"
+	"apiserver/handler/demo"
+	"apiserver/middleware"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

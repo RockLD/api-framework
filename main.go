@@ -1,11 +1,11 @@
 package main
 
 import (
-	"api/config"
-	"api/middleware"
-	"api/model"
-	v "api/pkg/version"
-	"api/router"
+	"apiserver/config"
+	"apiserver/middleware"
+	"apiserver/model"
+	v "apiserver/pkg/version"
+	"apiserver/router"
 	"encoding/json"
 	"errors"
 	"fmt"

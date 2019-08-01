@@ -1,10 +1,10 @@
 package demo
 
 import (
-	"api/handler"
-	"api/model"
-	"api/pkg/errno"
-	"api/util"
+	"apiserver/handler"
+	"apiserver/model"
+	"apiserver/pkg/errno"
+	"apiserver/util"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"

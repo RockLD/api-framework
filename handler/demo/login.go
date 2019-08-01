@@ -1,11 +1,11 @@
 package demo
 
 import (
-	"api/handler"
-	"api/model"
-	"api/pkg/auth"
-	"api/pkg/errno"
-	"api/pkg/token"
+	"apiserver/handler"
+	"apiserver/model"
+	"apiserver/pkg/auth"
+	"apiserver/pkg/errno"
+	"apiserver/pkg/token"
 	"github.com/gin-gonic/gin"
 )
 
