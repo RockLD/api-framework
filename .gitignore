@@ -13,3 +13,4 @@
 log
 api
 apiserver
+*.svg

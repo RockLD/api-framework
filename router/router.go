@@ -4,6 +4,7 @@ import (
 	"apiserver/check"
 	"apiserver/handler/demo"
 	"apiserver/middleware"
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -24,6 +25,7 @@ func Load(g *gin.Engine, m ...gin.HandlerFunc) *gin.Engine {
 		c.String(http.StatusNotFound, "The router is not exist!")
 	})
 
+	pprof.Register(g)
 	g.POST("/login", demo.Login)
 
 	//兼容版本，使用v1
