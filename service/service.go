@@ -32,7 +32,7 @@ func ListUser(username string, offset, limit int) ([]*model.UserInfo, uint64, er
 		wg.Add(1)
 		go func(u *model.UserModel) {
 			defer wg.Done()
-			shortId, err := util.GetShortId()
+			shortId, err := util.GenShortId()
 			if err != nil {
 				errChan <- err
 				return
